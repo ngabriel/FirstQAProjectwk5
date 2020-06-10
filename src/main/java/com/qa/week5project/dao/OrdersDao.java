@@ -7,7 +7,7 @@ import com.qa.week5project.Models.Item;
 import com.qa.week5project.Models.Order;
 import com.qa.week5project.Utils.Input;
 
-class OrdersDao {
+public class OrdersDao {
 	
 	private DatabaseConnection databaseConnection;
 	private ResultSet rs = null;
@@ -68,26 +68,15 @@ class OrdersDao {
 			
 		}
 
-		private void returnOrders(int cID) {
+		private ResultSet returnOrders(int cID) {
 			// TODO Auto-generated method stub
 			String sql = "select * from orders join orderline join items where fk_customer_id = "+ cID+ " group by order_id;";
 			System.out.println(sql);
 			this.rs = databaseConnection.sendQuery(sql);
 			
-			while(this.rs.next()){
-		         //Retrieve by column name
-		        
-				//rs.getString ask for the columname
-		         String orderID = this.rs.getString("order_id");
-		         String totalPRice = this.rs.getString("totalPrice");
-		         int id = rs.getInt(1);
-		         //Display values
-		         System.out.println(id);
-		         System.out.println( "Name: " + name);
-		         System.out.print("Favorite Color: " + fav_colour);
-		       ;
-		     	
-		      }
+		//	while(this.rs.next()){
+	//
+		  //    }
 			return rs;	
 		}
 }

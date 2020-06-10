@@ -4,4 +4,4 @@ insert into testivm.customers (customer_name, customer_fav_colour) values ("Iona
 insert into testivm.customers (customer_name, customer_fav_colour) values ("Isha", "Purple");
 insert into testivm.customers (customer_name, customer_fav_colour) values ("Jacqueline", "Green");
 insert into testivm.customers (customer_name, customer_fav_colour) values ("Joseph", "Black");
-update testivm.customers set customer_name = "David" where id = 8;
+update testivm.customers set customer_name = "David" where customer_id = 8;

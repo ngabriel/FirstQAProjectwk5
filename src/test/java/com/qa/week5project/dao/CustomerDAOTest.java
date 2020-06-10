@@ -20,8 +20,6 @@ import com.qa.week5project.Models.Customer;
 import org.junit.After;
 import org.junit.AfterClass;
 
-
-
 public class CustomerDAOTest {
 	
 	static DatabaseConnection databaseConnection;
