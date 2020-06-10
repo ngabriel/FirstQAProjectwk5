@@ -1,0 +1,10 @@
+insert into testivm.items(item_name, item_price) values("Book", "3.93");
+insert into testivm.items(item_name, item_price) values("Shampoo", "4.49");
+insert into testivm.items(item_name, item_price) values("Mobile Phone", "499.00");
+insert into testivm.items(item_name, item_price) values("MacbookPro", "2229.03");
+insert into testivm.items(item_name, item_price) values("Bottle of Water", "0.49");
+insert into testivm.items(item_name, item_price) values("Chocolate bar", ".89");
+insert into testivm.items(item_name, item_price) values("Weekend Festival Ticket", "199.99");
+insert into testivm.items(item_name, item_price) values("Gold Earrings", "39.99");
+insert into testivm.items(item_name, item_price) values("Gym/Yoga Pass", "48.00");
+insert into testivm.items(item_name, item_price) values("Perfume", "29.99");

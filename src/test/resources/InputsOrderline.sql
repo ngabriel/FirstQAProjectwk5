@@ -1,0 +1,9 @@
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (1, 7, 5);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (2, 9, 3);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (2, 17, 2);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (3, 7, 5);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (4, 10, 2);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (4, 8, 5);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (2, 9, 3);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (2, 9, 3);
+insert into testivm.orderline(fk_order_id, fk_item_id, quantity_ordered) values (2, 9, 3);
