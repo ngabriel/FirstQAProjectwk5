@@ -11,7 +11,7 @@ public class ImsTest {
 	public void test(){
 		//Test for a message to pass into create ims method
 		
-		Ims imsTest = new Ims();
+//		Ims imsTest = new Ims();
 		
 		
 		
