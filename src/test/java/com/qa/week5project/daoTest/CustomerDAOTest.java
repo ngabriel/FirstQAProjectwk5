@@ -1,6 +1,7 @@
-package com.qa.week5project.dao;
+package com.qa.week5project.daoTest;
 
 import static org.junit.Assert.assertEquals;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +16,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.qa.week5project.Models.Customer;
+import com.qa.week5project.dao.CustomerDao;
+import com.qa.week5project.dao.connections.DatabaseConnection;
+import com.qa.week5project.dao.connections.TestingDatabaseConnection;
+import com.qa.week5project.models.Customer;
 
 import org.junit.After;
 import org.junit.AfterClass;

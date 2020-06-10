@@ -1,4 +1,4 @@
-package com.qa.week5project.Models;
+package com.qa.week5project.models;
 
 
 

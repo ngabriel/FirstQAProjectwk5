@@ -1,4 +1,4 @@
-package com.qa.week5project.Utils;
+package com.qa.week5project.utils;
 
 
 import java.util.Scanner;

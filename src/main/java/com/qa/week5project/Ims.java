@@ -1,59 +1,41 @@
 package com.qa.week5project;
 
-import com.qa.week5project.Utils.Input;
-
-
-import com.qa.week5project.Utils.Menus;
-
-
-import com.qa.week5project.dao.LocalDatabaseConnection;
-import com.qa.week5project.menus.ImsCustomersMenu;
-import com.qa.week5project.menus.ImsItemsMenu;
-import com.qa.week5project.menus.ImsOrderMenu;
-
-
-
 import org.apache.log4j.Logger;
+
+import com.qa.week5project.controller.ImsCustomersMenu;
+import com.qa.week5project.controller.ImsItemsMenu;
+import com.qa.week5project.controller.ImsOrderMenu;
+import com.qa.week5project.dao.CustomerDao;
+import com.qa.week5project.dao.connections.DatabaseConnection;
+import com.qa.week5project.services.CustomerService;
+import com.qa.week5project.utils.Input;
+import com.qa.week5project.utils.Menus;
 
 public class Ims {
 
-
-	//declare a logger and pass in the class, every logger needs class
  	public static final Logger LOGGER = Logger.getLogger(Ims.class);
-	// continue watching video from wednesday 3rd june recorded by kart end of day
-	// fofrom 10.43 for rest of logger example
+	
+	private Input input ;
+	private DatabaseConnection databaseConnection;
+	
+	public Ims(Input input, DatabaseConnection databaseConnection) {
+		super();
+		this.input = input;
+		this.databaseConnection = databaseConnection;
+	}
 
-	Menus selectedMenu;
-	Input input = new Input();
 
-	private String message;
 
 	public void start(String message) {
-		
-		//LOGGER.trace("");
-		//LOGGER.debug("");
-		//LOGGER.info("");
-		//LOGGER.warn("");
-		//LOGGER.error("");
-		//LOGGER.fatal("");
-
-		//System.out.println("Database username: ");
-		//String user = input.getString();
-		//System.out.println("Database password: ");
-		//String password = input.getString();
-
-		// here we assign which database we want to connect to, LocalDatabase....
-		// RemoteDatab.... FakeConnec....
-		LocalDatabaseConnection localConnection = new LocalDatabaseConnection("root","root");
+	
 		
 		LOGGER.info(message);
-		
-		// iterate through our ations enum\s
 
 		for (Menus menu : Menus.values()) {
 			LOGGER.info(menu.name());
 		}
 
+		Menus selectedMenu;
 		System.out.println("------");
 		while (true) {
 			try {
@@ -62,8 +44,7 @@ public class Ims {
 				selectedMenu = Menus.valueOf(menuInput.toUpperCase());
 				break;
 			} catch (NullPointerException | IllegalArgumentException e) {
-				// Logger.debug(e.getStackTrace());
-				// Logge.r.info(("Computer says no. Please re-enter"))
+
 				LOGGER.warn("Not a valid choice, try again");
 			}
 		}
@@ -73,32 +54,28 @@ public class Ims {
 
 		switch (selectedMenu) {
 		case CUSTOMER:
-			//System.out.println("Going customer menu");
-			ImsCustomersMenu imsCM = new ImsCustomersMenu();
+			ImsCustomersMenu imsCM = new ImsCustomersMenu(input, new CustomerService(new CustomerDao(databaseConnection)));
 			imsCM.start("Welcome to Customer Menu");
 			
 			break;
 		case ITEM:
-			
 			ImsItemsMenu imsIM = new ImsItemsMenu();
-			imsIM.start("Welcome to Items Menu");
 			
 			break;
 		case ORDER:
 			
 			ImsOrderMenu imsOM = new ImsOrderMenu();
-			imsOM.start("Welcome to Orders Menu");
 			
 			break;
+		case EXIT:
+			databaseConnection.closeConnection();
+			System.exit(0);
+			
 
 		}
-		// DONT FORGET TO CLOSE OFF CONNECTIONS
-				localConnection.closeConnection();
+				
 
 	}
 
-	
-	// System.out.println("customer address:");
-	// String address = input.getInput();
 
 }
