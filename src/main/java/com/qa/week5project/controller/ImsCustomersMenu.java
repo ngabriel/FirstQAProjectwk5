@@ -10,7 +10,6 @@ import com.qa.week5project.utils.Action;
 import com.qa.week5project.utils.Input;
 
 public class ImsCustomersMenu {
-
 	public static final Logger LOGGER = Logger.getLogger(ImsCustomersMenu.class);
 	
 	private CustomerService customerService;
@@ -65,43 +64,37 @@ public class ImsCustomersMenu {
 
 
 	private void addCustomer() {
-		System.out.println("Enter Customer name");
+		LOGGER.info("Enter Customer name");
 		String name = input.getString();
-
-		System.out.println("and favorite colour");
+		LOGGER.info("and favorite colour");
 		String favColour = input.getString();
-
 		Customer customer = new Customer(name, favColour);
-		
 		customerService.createCustomer(customer);
-		
 		LOGGER.info("Succesfully added " + name);
-
-		// connection.closeConnection();
-
-		// ims.start("Type a menu name to continue");
-		// Input switchInput = new Input();
-		// Switch switch = new Switch();
-		// switch.start(switchInput);
-
-	}
-
-	private void viewCustomers() {
-		customerService.displayAllUsers();
-		// connection.closeConnection();
-
 	}
 
 	private void editCustomer() {
 		LOGGER.info("Enter ID of customer you would like to edit");
-			int cID = input.getInt();
-			String nName = input.getString();
-
-			customerService.changeCustomerName(cID, nName);
+		int cID = input.getInt();
+		// LOGGER.info(customerService.displayUserByID(cID));
+		LOGGER.info("Enter new name for this customer");
+		String nName = input.getString();
+		
+		customerService.changeCustomerName(cID, nName);
+		//LOGGER.info("Succesfully changed name to " + nName);
 	}
 
+	private void viewCustomers() {
+		customerService.displayAllUsers();
+	
+
+	}
+
+	
 	private void deleteCustomer() {
 		int cID = 0;
+		LOGGER.info("Enter ID of customer you would like to delete");
+		
 		try {
 			cID = input.getInt();
 		} catch (InputMismatchException e) {

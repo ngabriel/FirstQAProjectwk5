@@ -3,18 +3,29 @@ package com.qa.week5project.models;
 
 
 public class Item {
-	
+	private int id;
 	private String name;
 	private Double price;
 	
 	
 	public Item(String name, Double price) {
-		this.setName(name);
-		this.setPrice(price);
-
+		super();
+		this.name = name;
+		this.price = price;
+		
+	}
+	public Item(int id, String name, Double price) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		
 	}
 
-
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", name=" + name + ", price=" + price + "]";
+	}
 	public String getName() {
 		return name;
 	}
@@ -35,9 +46,13 @@ public class Item {
 	}
 
 
-	public static void viewItems() {
-		// TODO Auto-generated method stub
-		
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	

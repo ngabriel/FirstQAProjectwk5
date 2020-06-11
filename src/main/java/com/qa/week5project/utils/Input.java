@@ -7,18 +7,19 @@ public class Input {
 	
 	Scanner scanner = new Scanner(System.in);
 
-	public Double getInput() {
-		return scanner.nextDouble();
-		
+	public Double getDouble() {
+		Double a = scanner.nextDouble();
+		scanner.nextLine();
+		return a;
 	}
 	
 	public Integer getInt() {
-		return scanner.nextInt();
+		int a = scanner.nextInt();
+		scanner.nextLine();
+		return a;
 	}
 	
 	public String getString() {
 		return scanner.nextLine();
-		
-	
 		}
 }

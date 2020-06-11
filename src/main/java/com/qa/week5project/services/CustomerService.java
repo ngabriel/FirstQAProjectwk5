@@ -1,6 +1,7 @@
 package com.qa.week5project.services;
 
 import java.sql.SQLException;
+
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -52,6 +53,17 @@ public class CustomerService {
 	}
 	public void displayUserByID(int id) {
 		
+		try {
+			List<Customer> customer = customerDao.selectCustomers(id);
+			LOGGER.info(customer);
+		} catch (SQLException e) {
+			LOGGER.error(e.getMessage());
+			for(StackTraceElement element : e.getStackTrace()) {
+				LOGGER.debug(element);
+			}
+		}
+		
+		
 	}
 	
 	public void changeCustomerName(int id, String newName) {
@@ -61,14 +73,23 @@ public class CustomerService {
 			LOGGER.error(e.getMessage());
 			for(StackTraceElement element : e.getStackTrace()) {
 				LOGGER.debug(element);
-			};
+			}
+			
 		}
 	}
 	
 	public void deleteCustomer(int id) {
 		
+		try {
+			customerDao.deleteCustomer(id);
+		} catch (SQLException e) {
+			for(StackTraceElement element : e.getStackTrace()) {
+				LOGGER.debug(element);
+		}
 	}
 	
+	}
+}
 	
 
-}
+

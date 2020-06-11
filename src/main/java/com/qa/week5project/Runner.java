@@ -18,12 +18,12 @@ public class Runner {
 		Input input = new Input();
 		
 		// read config for some kind of connection
-		LOGGER.info("Please enter username");
-		String username= input.getString();
-		LOGGER.info("Please enter password");
-		String password= input.getString();
+		//LOGGER.info("Please enter username");
+		///String username= input.getString();
+		//LOGGER.info("Please enter password");
+		//String password= input.getString();
 		
-		DatabaseConnection connection = new LocalDatabaseConnection(username, password);
+		DatabaseConnection connection = new LocalDatabaseConnection("root", "root");
 		Ims ims = new Ims(input, connection);	
 		ims.start(openingMessage);
 	}
