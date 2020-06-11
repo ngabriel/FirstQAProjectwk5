@@ -44,10 +44,7 @@ public abstract class DatabaseConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ConnectionNotMadeException("Could not close connection");
-		} finally {
-			
-			
-		}
+		} 
 
 	}
 
@@ -63,7 +60,9 @@ public abstract class DatabaseConnection {
 
 			ResultSet resultset = statement.executeQuery(sql);
 
+
 			return resultset;
+			
 	
 
 	}
@@ -76,13 +75,21 @@ public abstract class DatabaseConnection {
 
 	// Create and update method, nothing is returned but we send a string to the
 	// database
-	public void sendUpdate(String sql) throws SQLException {
+	public void sendUpdate(String sql) {
 		
-		Statement statement = connection.createStatement();
+		Statement statement;
+		try {
+			statement = connection.createStatement();
+			statement.executeUpdate(sql);
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// use statement instances method executeUpdate to pass sql String to database
 		// to update with statement
-		statement.executeUpdate(sql);
-		statement.close();
+		
+	
 
 	}
 

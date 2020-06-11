@@ -31,7 +31,7 @@ public class Runner {
 		}
 
 		ConnectionEnums selectedconns;
-		System.out.println("------");
+		LOGGER.info("------");
 		while (true) {
 			try {
 

@@ -13,7 +13,7 @@ import com.qa.week5project.utils.Action;
 import com.qa.week5project.utils.Input;
 
 public class ImsItemsMenu {
-	public static final Logger LOGGER = Logger.getLogger(ImsCustomersMenu.class);
+	public static final Logger LOGGER = Logger.getLogger(ImsItemsMenu.class);
 	private Input input;
 	private ItemService itemService;
 	
@@ -27,7 +27,7 @@ public class ImsItemsMenu {
 		LOGGER.info(message);
 
 		for (Action action : Action.values()) {
-			System.out.println(action.name());
+			LOGGER.info(action.name());
 		}
 
 		Action selectedAction = null;
@@ -40,8 +40,6 @@ public class ImsItemsMenu {
 				LOGGER.warn("Not a valid choice, try again");
 			}
 		}
-		
-		//LOGGER.info(selectedAction + " an item");
 		
 		switch (selectedAction) {
 		case ADD:

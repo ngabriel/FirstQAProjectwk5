@@ -26,7 +26,7 @@ public class ImsCustomersMenu {
 		LOGGER.info(message);
 
 		for (Action action : Action.values()) {
-			System.out.println(action.name());
+			LOGGER.info(action.name());
 		}
 
 		Action selectedAction = null;
@@ -40,7 +40,7 @@ public class ImsCustomersMenu {
 			}
 		}
 		
-		//LOGGER.info(selectedAction + " a customer");
+		
 		
 		switch (selectedAction) {
 		case ADD:

@@ -36,7 +36,7 @@ public class Ims {
 		}
 
 		Menus selectedMenu;
-		System.out.println("------");
+		LOGGER.info("------");
 		while (true) {
 			try {
 
@@ -48,7 +48,7 @@ public class Ims {
 			}
 		}
 
-		System.out.println(selectedMenu);
+		LOGGER.info(selectedMenu);
 
 		switch (selectedMenu) {
 		case CUSTOMER:
@@ -64,7 +64,9 @@ public class Ims {
 			break;
 		case ORDER:
 
-			ImsOrderMenu imsOM = new ImsOrderMenu();
+			LOGGER.info("Orders menu to be released");
+			LOGGER.info("------");
+			start("Where to next?");
 
 			break;
 		case EXIT:

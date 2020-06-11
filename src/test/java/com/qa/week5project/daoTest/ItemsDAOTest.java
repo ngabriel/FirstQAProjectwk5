@@ -90,30 +90,41 @@ public class ItemsDAOTest {
 	public void test() {
 		//We can test our insert customer method
 		 
-//		ItemsDao itemsDao = new ItemsDao(databaseConnection);
-//		Item test = new Item("Flapjack",0.79);
-//		
-//		itemsDao.insertItem(test);
-//
-//		//create this query which will count the cusomers in our database
-//		String query = "SELECT * FROM items";
-//		//send this query and get the results back 
-//		//System.out.println(rs.getInt(1));
-//		ResultSet rs = databaseConnection.sendQuery(query);
-//		
-//		int count = 0;
-//		//iterate though each result set and count each rs
-//		try {
-//			while (rs.next()) {
-//				count++;
-//				
-//			}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(count);
-//		assertEquals(11, count);
+		ItemsDao itemsDao = new ItemsDao(databaseConnection);
+		Item test = new Item("Flapjack",0.79);
+		
+		try {
+			itemsDao.insertItem(test);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		//create this query which will count the cusomers in our database
+		String query = "SELECT * FROM items";
+		//send this query and get the results back 
+		//System.out.println(rs.getInt(1));
+		ResultSet rs = null;
+		try {
+			rs = databaseConnection.sendQuery(query);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		int count = 0;
+		//iterate though each result set and count each rs
+		try {
+			while (rs.next()) {
+				count++;
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(count);
+		assertEquals(11, count);
 		
 	}
 }
