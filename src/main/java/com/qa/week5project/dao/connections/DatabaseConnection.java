@@ -44,6 +44,9 @@ public abstract class DatabaseConnection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new ConnectionNotMadeException("Could not close connection");
+		} finally {
+			
+			
 		}
 
 	}
