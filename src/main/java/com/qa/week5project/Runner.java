@@ -1,42 +1,31 @@
 package com.qa.week5project;
 
-import java.sql.SQLException;
+import org.apache.log4j.Logger;
 
-
-
-
-import com.qa.week5project.Ims;
-import com.qa.week5project.Models.Customer;
-import com.qa.week5project.Utils.Input;
-
-import com.qa.week5project.exceptions.ConnectionNotMadeException;
+import com.qa.week5project.dao.connections.DatabaseConnection;
+import com.qa.week5project.dao.connections.LocalDatabaseConnection;
+import com.qa.week5project.utils.Input;
 
 public class Runner {
 	
+	public static final Logger LOGGER = Logger.getLogger(Runner.class);
+	
 	public static void main(String[] args) {
-		try {
-			//When this method get's thrown pass this mesage
-			
-			 
-			//throw new ConnectionNotMadeException("Testing");
-			
-		} catch (ConnectionNotMadeException e) {
-			//this allows us to print message with red lines
-			System.out.println(e.getMessage());
-			//prints message with print stack Trace - red lines
-			e.printStackTrace();
-		}
+		String openingMessage;
+		openingMessage = "Welcome to the Inventory Management System, Enter which menu would you like to go start?";
 		
-		String openingmessage = "Welcome to the Inventory Management System, Enter which menu would you like to go start?";
-		Ims ims = new Ims();
+		// read some config to determine what kind of input i want
+		Input input = new Input();
 		
-		ims.start(openingmessage);
+		// read config for some kind of connection
+		//LOGGER.info("Please enter username");
+		///String username= input.getString();
+		//LOGGER.info("Please enter password");
+		//String password= input.getString();
+		
+		DatabaseConnection connection = new LocalDatabaseConnection("root", "root");
+		Ims ims = new Ims(input, connection);	
+		ims.start(openingMessage);
 	}
 	
-	//"SELECT * FROM customer WHERE id = "+'$variable$'
-	// if (rs.next()) {
-	//		rs.close()
-	// 		rs = UPDATE 
-	
-
 }

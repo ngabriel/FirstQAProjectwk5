@@ -3,8 +3,8 @@ package com.qa.week5project.inventories;
 import java.sql.SQLException;
 
 import com.qa.week5project.dao.CustomerDao;
-import com.qa.week5project.dao.DatabaseConnection;
-import com.qa.week5project.dao.LocalDatabaseConnection;
+import com.qa.week5project.dao.connections.DatabaseConnection;
+import com.qa.week5project.dao.connections.LocalDatabaseConnection;
 
 public class CustomerInventory {
 	

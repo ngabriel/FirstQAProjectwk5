@@ -1,6 +1,7 @@
-package com.qa.week5project.dao;
+package com.qa.week5project.daoTest;
 
 import static org.junit.Assert.assertEquals;
+
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +16,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.qa.week5project.Models.Customer;
+import com.qa.week5project.dao.CustomerDao;
+import com.qa.week5project.dao.connections.DatabaseConnection;
+import com.qa.week5project.dao.connections.TestingDatabaseConnection;
+import com.qa.week5project.models.Customer;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -84,31 +88,31 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void test(){
-		//We can test our insert customer method
-		 
-		CustomerDao customerdao = new CustomerDao(databaseConnection);
-		Customer test = new Customer("baNaomi","Blue");
-		
-		customerdao.insertCustomer(test);
-
-		//create this query which will count the cusomers in our database
-		String query = "SELECT * FROM customers";
-		//send this query and get the results back 
-		ResultSet rs = databaseConnection.sendQuery(query);
-		
-		int count = 0;
-		//iterate though each result set and count each rs
-		try {
-			while (rs.next()) {
-				count++;
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		System.out.println(count);
-		assertEquals(7, count);
-		
+//		//We can test our insert customer method
+//		 
+//		CustomerDao customerdao = new CustomerDao(databaseConnection);
+//		Customer test = new Customer("baNaomi","Blue");
+//		
+//		customerdao.insertCustomer(test);
+//
+//		//create this query which will count the cusomers in our database
+//		String query = "SELECT * FROM customers";
+//		//send this query and get the results back 
+//		ResultSet rs = databaseConnection.sendQuery(query);
+//		
+//		int count = 0;
+//		//iterate though each result set and count each rs
+//		try {
+//			while (rs.next()) {
+//				count++;
+//				
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(count);
+//		assertEquals(7, count);
+//		
 		
 	}
 	

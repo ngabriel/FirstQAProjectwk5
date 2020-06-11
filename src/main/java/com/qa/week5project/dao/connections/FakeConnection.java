@@ -1,4 +1,4 @@
-package com.qa.week5project.dao;
+package com.qa.week5project.dao.connections;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
