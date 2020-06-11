@@ -1,11 +1,11 @@
 package com.qa.week5project.controller;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 import com.qa.week5project.Ims;
 import com.qa.week5project.dao.CustomerDao;
-import com.qa.week5project.dao.ItemsDao;
+
 import com.qa.week5project.dao.OrdersDao;
 import com.qa.week5project.dao.connections.LocalDatabaseConnection;
 import com.qa.week5project.models.Item;

@@ -2,18 +2,18 @@ package com.qa.week5project.models;
 
 public class Order {
 
-	private int fk_customer_id;
+	private int customerID;
 	
-	public Order(int fk_customer_id) {
-		this.setFk_customer_id(fk_customer_id);
+	public Order(int customerID) {
+		this.setCustomerID(customerID);
 	}
 
-	public int getFk_customer_id() {
-		return fk_customer_id;
+	public int getCustomerID() {
+		return customerID;
 	}
 
-	public void setFk_customer_id(int fk_customer_id) {
-		this.fk_customer_id = fk_customer_id;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 	
 	

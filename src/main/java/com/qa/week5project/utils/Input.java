@@ -9,15 +9,15 @@ import org.apache.log4j.Logger;
 import com.qa.week5project.controller.ImsCustomersMenu;
 
 public class Input {
-	public static final Logger LOGGER = Logger.getLogger(ImsCustomersMenu.class);
+	public static final Logger LOGGER = Logger.getLogger(Input.class);
 	
 	Scanner scanner = new Scanner(System.in);
 
 	public Double getDouble() {
 		while (true) {
 			try {
-				Double a = scanner.nextDouble();
-				return a;
+				return scanner.nextDouble();
+			
 			} catch (InputMismatchException e) {
 				LOGGER.warn("Please enter in the format XX.XX");
 			} finally {
@@ -29,8 +29,8 @@ public class Input {
 	public Integer getInt() {
 		while (true) {
 			try {
-				int a = scanner.nextInt();
-				return a;
+				return scanner.nextInt();
+				
 			} catch (InputMismatchException e) {
 				LOGGER.warn("Please enter a whole number");
 			} finally {

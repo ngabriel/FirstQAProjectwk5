@@ -11,6 +11,9 @@ public class Runner {
 	public static final Logger LOGGER = Logger.getLogger(Runner.class);
 	
 	public static void main(String[] args) {
+		//String customer = "NAoim"
+		//String Colour = "red";
+		//System.out.println("select customer_id from customers where customer_name =  '"+ customer +"' && customer_fav_colour = "' + Colour+ "';");
 		String openingMessage;
 		openingMessage = "Welcome to the Inventory Management System, Enter which menu would you like to go start?";
 		

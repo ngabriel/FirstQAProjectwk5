@@ -15,7 +15,7 @@ public class TestingDatabaseConnection  extends DatabaseConnection{
 		try {
 			setConnection(DriverManager.getConnection("jdbc:mysql://127.0.0.1/testivm?serverTimezone=BST", getUsername(), getPassword()));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 			throw new ConnectionNotMadeException("Local database is not accessible: " + e.getMessage());
 		}		

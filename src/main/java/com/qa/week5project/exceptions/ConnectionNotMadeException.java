@@ -3,7 +3,7 @@ package com.qa.week5project.exceptions;
 
 public class ConnectionNotMadeException extends RuntimeException{
 	
-	private String message;
+	private final String  message;
 
 	public ConnectionNotMadeException(String message) {
 		super();
@@ -12,6 +12,7 @@ public class ConnectionNotMadeException extends RuntimeException{
 
 	//this overwrites the exception method's getMessage 
 	//when we call this method in our classes, what message we put in the parameters will be printed out to us
+	@Override
 	public String getMessage() {
 		return message;
 	}

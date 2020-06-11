@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 
 import org.apache.log4j.Logger;
 
+import com.qa.week5project.exceptions.NotFoundException;
 import com.qa.week5project.models.Customer;
 import com.qa.week5project.services.CustomerService;
 import com.qa.week5project.utils.Action;
@@ -20,9 +21,6 @@ public class ImsCustomersMenu {
 		this.input = input;
 		this.customerService = customerService;
 	}
-
-
-
 	public void start(String message) {
 
 		LOGGER.info(message);
@@ -42,7 +40,7 @@ public class ImsCustomersMenu {
 			}
 		}
 		
-		LOGGER.info(selectedAction + " a customer");
+		//LOGGER.info(selectedAction + " a customer");
 		
 		switch (selectedAction) {
 		case ADD:
@@ -70,17 +68,39 @@ public class ImsCustomersMenu {
 		String favColour = input.getString();
 		Customer customer = new Customer(name, favColour);
 		customerService.createCustomer(customer);
-		LOGGER.info("Succesfully added " + name);
+		LOGGER.info("------");
+		
+		
+		
+		
+		
+
+		//customerService.displayUserByID(cID);
 	}
 
 	private void editCustomer() {
+		
 		LOGGER.info("Enter ID of customer you would like to edit");
 		int cID = input.getInt();
-		// LOGGER.info(customerService.displayUserByID(cID));
-		LOGGER.info("Enter new name for this customer");
-		String nName = input.getString();
+		try {
+			customerService.displayUserByID(cID);
+			LOGGER.info("Enter new name for this customer");
+			String nName = input.getString();
+			LOGGER.info("Details changed, new details below");
+			customerService.changeCustomerName(cID, nName);
+			customerService.displayUserByID(cID);}
+		catch (NotFoundException e)
+		{
+			LOGGER.info("No customer with ID:" +cID +" could be found in the database");
+		}
+	finally {
+			LOGGER.info("------");
+		}
 		
-		customerService.changeCustomerName(cID, nName);
+		
+		
+		
+		
 		//LOGGER.info("Succesfully changed name to " + nName);
 	}
 

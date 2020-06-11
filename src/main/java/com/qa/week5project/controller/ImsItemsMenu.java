@@ -1,16 +1,13 @@
 package com.qa.week5project.controller;
 
-import java.sql.SQLException;
+
 import java.util.InputMismatchException;
 
 import org.apache.log4j.Logger;
 
-import com.qa.week5project.dao.CustomerDao;
-import com.qa.week5project.dao.ItemsDao;
-import com.qa.week5project.dao.connections.LocalDatabaseConnection;
-import com.qa.week5project.models.Customer;
+import com.qa.week5project.exceptions.NotFoundException;
 import com.qa.week5project.models.Item;
-import com.qa.week5project.services.CustomerService;
+
 import com.qa.week5project.services.ItemService;
 import com.qa.week5project.utils.Action;
 import com.qa.week5project.utils.Input;
@@ -44,7 +41,7 @@ public class ImsItemsMenu {
 			}
 		}
 		
-		LOGGER.info(selectedAction + " an item");
+		//LOGGER.info(selectedAction + " an item");
 		
 		switch (selectedAction) {
 		case ADD:
@@ -78,13 +75,21 @@ public class ImsItemsMenu {
 	private void editItem() {
 		LOGGER.info("Enter ID of item you would like to edit");
 		int cID = input.getInt();
-		// LOGGER.info(customerService.displayUserByID(cID));
-		LOGGER.info("Enter new name for this item");
-		String nName = input.getString();
-		
-		itemService.changeItemName(cID, nName);
-		//LOGGER.info("Succesfully changed name to " + nName);
+		try {
+			itemService.displayItemByID(cID);
+			LOGGER.info("Enter new name for this item");
+			String nName = input.getString();
+			LOGGER.info("Details changed, new details below");
+			itemService.changeItemName(cID, nName);
+			itemService.displayItemByID(cID);
+		} catch (NotFoundException e)
+		{
+			LOGGER.info("No item with ID:" +cID +" could be found in the database");
+		}
+	finally {
+			LOGGER.info("------");
 	}
+		}
 
 	private void viewItems() {
 		itemService.displayAllItems();

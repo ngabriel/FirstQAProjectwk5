@@ -9,11 +9,12 @@ import org.apache.log4j.Logger;
 import com.qa.week5project.dao.CustomerDao;
 import com.qa.week5project.exceptions.NotFoundException;
 import com.qa.week5project.models.Customer;
+import com.qa.week5project.utils.Input;
 
 public class CustomerService {
 
 	public static final Logger LOGGER = Logger.getLogger(CustomerService.class);
-	
+	private Input input;
 	private CustomerDao customerDao;
 
 
@@ -25,14 +26,16 @@ public class CustomerService {
 	
 	public void createCustomer(Customer customer){
 		try {
-			customerDao.insertCustomer(customer);
+			int id = customerDao.insertCustomer(customer);
+			LOGGER.info("Customer succesfully added, see details below");
+			displayUserByID(id);
 		} catch (SQLException e) {
 			LOGGER.error(e.getMessage());
 			for(StackTraceElement element : e.getStackTrace()) {
 				LOGGER.debug(element);
-			}
+			
 		}
-		
+		}
 		
 	}
 
@@ -81,16 +84,25 @@ public class CustomerService {
 	
 	public void deleteCustomer(int id) {
 		
-		try {
-			customerDao.deleteCustomer(id);
-		} catch (SQLException e) {
-			for(StackTraceElement element : e.getStackTrace()) {
-				LOGGER.debug(element);
-		}
-	}
-	
-	}
+			
+				
+			
+			try {
+				customerDao.selectCustomers(id);
+				
+				displayUserByID(id);
+				customerDao.deleteCustomer(id);
+				LOGGER.info("The above customer has now been deleted");
+				
+				
+			} catch (SQLException | InputMismatchException | NotFoundException e) {
+				for(StackTraceElement element : e.getStackTrace()) {
+					LOGGER.debug(element);
+					
+			}
+				LOGGER.info("No customer found with ID: "+id);
 }
+		} 
 	
-
+	}
 

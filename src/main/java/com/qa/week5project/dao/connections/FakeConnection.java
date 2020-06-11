@@ -15,7 +15,7 @@ public class FakeConnection extends DatabaseConnection{
 		try {
 			setConnection(DriverManager.getConnection("mysql://34.5.32.34", getUsername(), getPassword()));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}
 	}
