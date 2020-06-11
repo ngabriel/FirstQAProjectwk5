@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -63,14 +64,9 @@ public class ItemsDao {
 		PreparedStatement preparedStatement = databaseConnection.getPreparedStatement(sql);
 		preparedStatement.setString(1, newName);
 		preparedStatement.setInt(2, id);
-		
 		if (preparedStatement.executeUpdate() == 0) {
-			LOGGER.warn("No records were changed as id did not match");
 			throw new NotFoundException("No records were changed as id did not match");
-			
-			
 		};
-		
 	}
 
 

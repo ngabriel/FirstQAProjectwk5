@@ -1,11 +1,13 @@
 package com.qa.week5project.services;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
 import com.qa.week5project.dao.ItemsDao;
+import com.qa.week5project.exceptions.NotFoundException;
 import com.qa.week5project.models.Customer;
 import com.qa.week5project.models.Item;
 
@@ -92,7 +94,7 @@ public class ItemService {
 		// TODO Auto-generated method stub
 		try {
 		itemsDao.editItem(cID, nName);
-	} catch (SQLException e) {
+	} catch (SQLException | InputMismatchException | NotFoundException e) {
 		LOGGER.error(e.getMessage());
 		for(StackTraceElement element : e.getStackTrace()) {
 			LOGGER.debug(element);
