@@ -37,6 +37,7 @@ public class Input {
 				scanner.nextLine();
 		}
 	}
+	}
 	
 	public String getString() {
 		return scanner.nextLine();
