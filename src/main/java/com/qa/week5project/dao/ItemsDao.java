@@ -7,15 +7,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import com.qa.week5project.Ims;
 import com.qa.week5project.dao.connections.DatabaseConnection;
 import com.qa.week5project.exceptions.NotFoundException;
 import com.qa.week5project.models.Customer;
 import com.qa.week5project.models.Item;
+import com.qa.week5project.services.CustomerService;
 
 public class ItemsDao {
-	
+	public static final Logger LOGGER = Logger.getLogger(ItemsDao.class);
 	private static DatabaseConnection databaseConnection;
+	private Object isNotAnInt;
+	private Boolean b;
 
 	public ItemsDao(DatabaseConnection databaseConnection) {
 		super();
@@ -58,11 +63,17 @@ public class ItemsDao {
 		PreparedStatement preparedStatement = databaseConnection.getPreparedStatement(sql);
 		preparedStatement.setString(1, newName);
 		preparedStatement.setInt(2, id);
+		
 		if (preparedStatement.executeUpdate() == 0) {
+			LOGGER.warn("No records were changed as id did not match");
 			throw new NotFoundException("No records were changed as id did not match");
+			
+			
 		};
 		
 	}
+
+
 
 	public void deleteItem(int id) throws SQLException {
 		String sql = "delete from items where item_id = " + id + ";";
